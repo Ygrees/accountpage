@@ -12,13 +12,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false,
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Settings Page',
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),
       home: Scaffold(
-        backgroundColor: Colors.white, // set background color here
+        backgroundColor: Colors.black, // Установлен голубой цвет фона
         body: ProfilePage(),
       ),
     );
@@ -31,13 +32,12 @@ class ProfileImageAndButtons extends StatelessWidget {
     return Column(
       children: <Widget>[
         Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-            ]   // children
-          ),
-       ],
-     );
-   }
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [],
+        ),
+      ],
+    );
+  }
 }
 
 class SettingsPage extends StatelessWidget {
@@ -49,7 +49,7 @@ class SettingsPage extends StatelessWidget {
         elevation: 0,
         title: Text(''),
         iconTheme: IconThemeData(
-          color: Colors.black, // Цвет здесь
+          color: Colors.black,
         ),
         actions: [
           IconButton(
@@ -58,61 +58,122 @@ class SettingsPage extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => ProfilePage()),
-              );// Действия при нажатии на кнопку
+              );
             },
           ),
         ],
       ),
-      body: Padding(
-        padding: EdgeInsets.only(left: 30.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            ProfileImageAndButtons(),
-            SizedBox(height: 10),
-            SizedBox(
-              width: 320,
-              child: ElevatedButton(
-                child: Text('1'),
-                onPressed: () {
-                  // Действия при нажатии на кнопку 1
-                },
-              ),
+      body: Center(
+        child: Padding(
+          padding: EdgeInsets.all(30.0),
+          child: Card(
+            elevation: 8,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
             ),
-            SizedBox(height: 10),
-            SizedBox(
-              width: 320,
-              child: ElevatedButton(
-                child: Text('2'),
-                onPressed: () {
-                  // Действия при нажатии на кнопку 2
-                },
-              ),
-            ),
-            SizedBox(height: 10),
-            SizedBox(
-              width: 320,
-              child: ElevatedButton(
-                child: Text('3'),
-                onPressed: () {
-                  // Действия при нажатии на кнопку 3
-                },
-              ),
-            ),
-            SizedBox(height: 10),
-            SizedBox(
-              width: 320,
-              child: ElevatedButton(
-                child: Text('Log Out'),
-                onPressed: () {
-                  // Действия при нажатии на кнопку 5
-                },
-              ),
-            ),
-          ],
-        ),
-      ),
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  ProfileImageAndButtons(),
+                  SizedBox(height: 10),
+                  TextButton(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Icon(Icons.adjust),
+                        Expanded(
+                          child: Text(
+                            '1',
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ],
+                    ),
+                    style: TextButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      primary: Colors.black,
+                      textStyle: TextStyle(fontSize: 18),
+                    ),
+                    onPressed: () {},
+                  ),
+                  SizedBox(height: 10),
+                  TextButton(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Icon(Icons.adjust),
+                        Expanded(
+                          child: Text(
+                            '2',
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ],
+                    ),
+                    style: TextButton.styleFrom(
+                      backgroundColor: Colors.transparent,
+                      primary: Colors.black,
+                      textStyle: TextStyle(fontSize: 18),
+                    ),
+                    onPressed: () {},
+                  ),
+                  SizedBox(height: 10),
+                  TextButton(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Icon(Icons.adjust),
+                        Expanded(
+                          child: Text(
+                            '3',
+                            textAlign: TextAlign.center,
+                          ),
+                        ),
+                      ],
+                    ),
+                        style: TextButton.styleFrom(
+    backgroundColor: Colors.transparent,
+    primary: Colors.black,
+    textStyle: TextStyle(fontSize: 18),
+    ),
+    onPressed: () {
+    // Действия при нажатии на кнопку 3
+    },
+    ),
+    SizedBox(height: 10),
+    TextButton(
+    child: Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+    Icon(Icons.exit_to_app),
+    Expanded(
+    child: Text(
+    'Log Out',
+    textAlign: TextAlign.center,
+    ),
+    ),
+    ],
+    ),
+    style: TextButton.styleFrom(
+    backgroundColor: Colors.transparent,
+    primary: Colors.black,
+    textStyle: TextStyle(fontSize: 18),
+    ),
+    onPressed: () {
+    // Действия при нажатии на кнопку "Log Out"
+    },
+    ),
+    ],
+    ),
+    ),
+    ),
+    ),
     );
   }
 }
+
+
+
