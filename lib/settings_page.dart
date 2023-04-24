@@ -29,7 +29,19 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
+class Sett extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: Text(
+          'Settings',
+          style: TextStyle(fontSize: 24, color: Colors.black),
+        ),
+      ),
+    );
+  }
+}
 
 class ProfileImageAndButtons extends StatelessWidget {
   @override
@@ -85,108 +97,125 @@ class SettingsPage extends StatelessWidget {
     colors: [Colors.white, Colors.white],
     ),
     ),
-    child: Center(
-    child: Padding(
-    padding: EdgeInsets.all(30.0),
-    child: Card(
-    elevation: 8,
-    shape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(16),
-    ),
-    child: Padding(
-    padding: EdgeInsets.all(16.0),
-    child: ListView(
-    shrinkWrap: true,
+      child: Column(
+          children: [
+          Text('Settings', style: TextStyle(color: Colors.black, fontSize: 18)),
+      Center(
+        child: Padding(
+          padding: EdgeInsets.all(30.0),
+          child: Card(
+            elevation: 8,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16),
+            ),
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: ListView(
+                shrinkWrap: true,
                   children: <Widget>[
-                ProfileImageAndButtons(),
-                SizedBox(height: 10),
-                TextButton(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Icon(Icons.cases_outlined),
-                      Expanded(
-                        child: Text(
-                          'Company Information',
-                          textAlign: TextAlign.center,
-                        ),
+                    SizedBox(height: 40),
+                    Container(
+                      decoration: BoxDecoration(
+                        border: Border(bottom: BorderSide(color: Colors.grey)),
                       ),
-                    ],
-                  ),
-                  style: TextButton.styleFrom(
-                    backgroundColor: Colors.transparent,
-                    primary: Colors.black,
-                    textStyle: TextStyle(fontSize: 18),
-                  ),
-                  onPressed: () {},
-                ),
-                SizedBox(height: 10),
-                TextButton(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Icon(Icons.wallet),
-                      Expanded(
-                        child: Text(
-                          'Payment Information',
-                          textAlign: TextAlign.center,
+                      child: TextButton(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Icon(Icons.cases_outlined),
+                            Expanded(
+                              child: Text(
+                                'Company Information',
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ],
                         ),
-                      ),
-                    ],
-                  ),
-                  style: TextButton.styleFrom(
-                    backgroundColor: Colors.transparent,
-                    primary: Colors.black,
-                    textStyle: TextStyle(fontSize: 18),
-                  ),
-                  onPressed: () {},
-                ),
-                SizedBox(height: 10),
-                TextButton(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Icon(Icons.newspaper),
-                      Expanded(
-                        child: Text(
-                          'Confidential policy and agreement',
-                          textAlign: TextAlign.center,
+                        style: TextButton.styleFrom(
+                          backgroundColor: Colors.transparent,
+                          primary: Colors.black,
+                          textStyle: TextStyle(fontSize: 18),
                         ),
+                        onPressed: () {},
                       ),
-                    ],
-                  ),
-                  style: TextButton.styleFrom(
-                    backgroundColor: Colors.transparent,
-                    primary: Colors.black,
-                    textStyle: TextStyle(fontSize: 18),
-                  ),
-                  onPressed: () {
-                    // Действия при нажатии на кнопку 3
-                  },
-                ),
-                SizedBox(height: 10),
-                TextButton(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Icon(Icons.exit_to_app),
-                      Expanded(
-                        child: Text(
-                          'Log Out',
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ],
-                  ),
-                  style: TextButton.styleFrom(
-                    backgroundColor: Colors.transparent,
-                    primary: Colors.black,
-                    textStyle: TextStyle(fontSize: 18),
-                  ),
-                  onPressed: () {
-                    // Действия при нажатии на кнопку "Log Out"
-                     },
                     ),
+                    SizedBox(height: 40),
+                    Container(
+                      decoration: BoxDecoration(
+                        border: Border(bottom: BorderSide(color: Colors.grey)),
+                      ),
+                      child: TextButton(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Icon(Icons.wallet),
+                            Expanded(
+                              child: Text(
+                                'Payment Information',
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ],
+                        ),
+                        style: TextButton.styleFrom(
+                          backgroundColor: Colors.transparent,
+                          primary: Colors.black,
+                          textStyle: TextStyle(fontSize: 18),
+                        ),
+                        onPressed: () {},
+                      ),
+                    ),
+                    SizedBox(height: 40),
+                    Container(
+                      decoration: BoxDecoration(
+                        border: Border(bottom: BorderSide(color: Colors.grey)),
+                      ),
+                      child: TextButton(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Icon(Icons.lock_open),
+                            Expanded(
+                              child: Text(
+                                'Confidential policy',
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          ],
+                        ),
+                        style: TextButton.styleFrom(
+                          backgroundColor: Colors.transparent,
+                          primary: Colors.black,
+                          textStyle: TextStyle(fontSize: 18),
+                        ),
+                        onPressed: () {},
+                      ),
+                    ),
+                    SizedBox(height: 30),
+                    TextButton(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Icon(Icons.exit_to_app),
+                          Expanded(
+                            child: Text(
+                              'Log Out',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
+                      ),
+                      style: TextButton.styleFrom(
+                        backgroundColor: Colors.transparent,
+                        primary: Colors.black,
+                        textStyle: TextStyle(fontSize: 18),
+                      ),
+                      onPressed: () {
+                        // Действия при нажатии на кнопку "Log Out"
+                      },
+                    ),
+
+
                   ],
                 ),
               ),
