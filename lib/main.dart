@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'profile_page.dart';
 import 'settings_page.dart';
 
+
 void main() {
   runApp(const MyApp());
 }
@@ -23,7 +24,6 @@ class MyApp extends StatelessWidget {
       800: Color(0xff014131),
       900: Color(0xff014131),
     });
-
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Account Page',
@@ -44,49 +44,40 @@ class ProfileImageAndButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(width: 10),
-              Padding(
-                padding: EdgeInsets.fromLTRB(0, 0, 50, 80),
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => ProfilePage()),
-                    );
-                  },
-                  child: Image.asset(
-                    'images/profile_icon.png',
-                    width: 50,
-                    height: 50,
-                  ),
-                ),
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Padding(
+              padding: EdgeInsets.all(50),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ProfilePage()),
+                  );
+                },
+                child: Icon(Icons.person),
               ),
-              SizedBox(width: 10),
-              Padding(
-                padding: EdgeInsets.fromLTRB(140, 0, 50, 80),
-                child: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => SettingsPage()),
-                    );
-                  },
-                  child: Image.asset(
-                    'images/gear_icon.png',
-                    width: 45,
-                    height: 45,
-                  ),
-                ),
+            ),
+            Padding(
+              padding: EdgeInsets.all(50),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => SettingsPage()),
+                  );
+                },
+                child: Icon(Icons.settings),
               ),
-            ]   // children
+            ),
+          ],
         ),
-
         Padding(
-          padding: EdgeInsets.fromLTRB(0, 0, 40, 0),
+          padding: EdgeInsets.all(10),
           child: Center(
             child: Image.asset(
               'images/card_image.png',
@@ -95,35 +86,42 @@ class ProfileImageAndButtons extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(height: 10),
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            ElevatedButton(
+            OutlinedButton(
               style: ButtonStyle(
-                minimumSize: MaterialStateProperty.all(Size(150, 40)),
+                backgroundColor: MaterialStateProperty.all(Colors.transparent),
+                elevation: MaterialStateProperty.all(0),
+                minimumSize: MaterialStateProperty.all(Size(145, 40)),
               ),
-              child: Text('Extend'),
+              child: Text('Extend',
+              style: TextStyle(color: Colors.black)
+              ),
+
               onPressed: () {
-                // Действия при нажатии на кнопку 1
+                // Actions when pressing button 1
               },
             ),
-            SizedBox(width: 20),
-            ElevatedButton(
+            OutlinedButton(
               style: ButtonStyle(
-                minimumSize: MaterialStateProperty.all(Size(150, 40)),
+                backgroundColor: MaterialStateProperty.all(Colors.transparent),
+                elevation: MaterialStateProperty.all(0),
+                minimumSize: MaterialStateProperty.all(Size(140, 40)),
               ),
-              child: Text('Freeze'),
+              child: Text('Freeze',
+                  style: TextStyle(color: Colors.black)
+              ),
               onPressed: () {
-                // Действия при нажатии на кнопку 2
+                // Actions when pressing button 2
               },
             ),
-          ], //children
+          ],
         ),
       ],
     );
   }
 }
-
 
 class AccountPage extends StatelessWidget {
   @override
@@ -138,27 +136,33 @@ class AccountPage extends StatelessWidget {
           style: TextStyle(color: Colors.black),
         ),
       ),
-      body: Padding(
-        padding: EdgeInsets.only(left: 30.0),
+      body: Center(
         child: Column(
+
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             ProfileImageAndButtons(),
             SizedBox(height: 20),
             SizedBox(
               width: 320,
               child: ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.transparent),
+                  elevation: MaterialStateProperty.all(0),
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Icon(Icons.payment),
+                    Icon(Icons.payment, color: Colors.black),
                     SizedBox(width: 10),
-                    Text('Payment'),
+                    Text('Payment',
+                        style: TextStyle(color: Colors.black)
+                    ),
                   ],
                 ),
                 onPressed: () {
-                    // Сюда на страницу Дияра рут
+                  // Navigate to Diyar's page
                 },
               ),
             ),
@@ -166,12 +170,18 @@ class AccountPage extends StatelessWidget {
             SizedBox(
               width: 320,
               child: ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.transparent),
+                  elevation: MaterialStateProperty.all(0),
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Icon(Icons.notifications),
+                    Icon(Icons.notifications, color: Colors.black),
                     SizedBox(width: 10),
-                    Text('Notifications'),
+                Text('Notifications',
+                  style: TextStyle(color: Colors.black)
+                ),
                   ],
                 ),
                 onPressed: () {
@@ -183,16 +193,22 @@ class AccountPage extends StatelessWidget {
             SizedBox(
               width: 320,
               child: ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.transparent),
+                  elevation: MaterialStateProperty.all(0),
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Icon(Icons.phone),
+                    Icon(Icons.phone, color: Colors.black),
                     SizedBox(width: 10),
-                    Text('Support'),
+                Text('Support',
+                  style: TextStyle(color: Colors.black)
+                ),
                   ],
                 ),
                 onPressed: () {
-                  // Действия при нажатии на кнопку 3
+
                 },
               ),
             ),
@@ -200,12 +216,18 @@ class AccountPage extends StatelessWidget {
             SizedBox(
               width: 320,
               child: ElevatedButton(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(Colors.transparent),
+                  elevation: MaterialStateProperty.all(0),
+                ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Icon(Icons.exit_to_app),
+                    Icon(Icons.exit_to_app, color: Colors.black),
                     SizedBox(width: 10),
-                    Text('Log Out'),
+                Text('Log Out',
+                  style: TextStyle(color: Colors.black)
+                ),
                   ],
                 ),
                 onPressed: () {
@@ -219,6 +241,7 @@ class AccountPage extends StatelessWidget {
     );
   }
 }
+
 
 
 

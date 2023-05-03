@@ -222,7 +222,9 @@ class SettingsPage extends StatelessWidget {
             ),
           ),
         ),
-       ),
+       ]
+    ),
+    ),
     );
   }
 }

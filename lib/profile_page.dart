@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'profile_page.dart';
 import 'settings_page.dart';
 import 'main.dart';
+import 'dart:io';
+import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 
 void main() {
@@ -10,6 +13,8 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+
+
 
 
   @override
@@ -35,10 +40,71 @@ class ProfileImageAndButtons extends StatelessWidget {
         Padding(
           padding: EdgeInsets.fromLTRB(0, 0, 30, 0),
           child: Center(
-            child: Image.asset(
-              'images/profile_icon.png',
-              height: 200,
-              width: 300,
+            child:
+              Container(
+                width: 200,
+                height: 200,
+                child: Icon(Icons.add_a_photo),
+              )
+            ),
+          ),
+      ],
+    );
+  }
+}
+
+class ProfileImageAndButton extends StatefulWidget {
+  @override
+  _ProfileImageAndButtonsState createState() => _ProfileImageAndButtonsState();
+}
+
+class _ProfileImageAndButtonsState extends State<ProfileImageAndButton> {
+  File? _imageFile;
+
+  final ImagePicker _picker = ImagePicker();
+
+  Future<void> _pickImage() async {
+    final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+
+    setState(() {
+      if (pickedFile != null) {
+        _imageFile = File(pickedFile.path);
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Padding(
+          padding: EdgeInsets.fromLTRB(0, 0, 30, 0),
+          child: Center(
+            child: InkWell(
+              onTap: () async {
+                await _pickImage();
+              },
+              child: Container(
+                width: 200,
+                height: 200,
+                decoration: BoxDecoration(
+                  color: Colors.grey[200],
+                  shape: BoxShape.circle,
+                  image: _imageFile != null
+                      ? DecorationImage(
+                    image: FileImage(_imageFile!),
+                    fit: BoxFit.cover,
+                  )
+                      : null,
+                ),
+                child: _imageFile == null
+                    ? Icon(
+                  Icons.add_a_photo,
+                  size: 40,
+                  color: Colors.grey[800],
+                )
+                    : null,
+              ),
             ),
           ),
         ),
@@ -46,6 +112,7 @@ class ProfileImageAndButtons extends StatelessWidget {
     );
   }
 }
+
 
 TextEditingController _nameController = TextEditingController();
 TextEditingController _surnameController = TextEditingController();
@@ -260,5 +327,7 @@ class ProfilePage extends StatelessWidget {
     );
   }
 }
+
+
 
 
